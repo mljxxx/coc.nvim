@@ -139,7 +139,7 @@ export class Workspace implements IWorkspace {
     this.version = VERSION
     this.configurations = this.createConfigurations()
     let cwd = process.cwd()
-    if (cwd != os.homedir() && inDirectory(cwd, ['.vim'])) {
+    if (cwd != os.homedir() && inDirectory(cwd, ['.vscode'])) {
       this._workspaceFolders.push({
         uri: URI.file(cwd).toString(),
         name: path.basename(cwd)
@@ -1347,7 +1347,7 @@ augroup end`
   }
 
   private createConfigurations(): Configurations {
-    let home = path.normalize(process.env.COC_VIMCONFIG) || path.join(os.homedir(), '.vim')
+    let home = path.normalize(process.env.COC_VIMCONFIG) || path.join(os.homedir(), '.vscode')
     let userConfigFile = path.join(home, CONFIG_FILE_NAME)
     return new Configurations(userConfigFile, new ConfigurationShape(this))
   }

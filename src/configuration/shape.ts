@@ -33,7 +33,7 @@ export default class ConfigurationProxy implements ConfigurationShape {
   }
 
   public get workspaceConfigFile(): string {
-    let folder = path.join(this.workspace.root, '.vim')
+    let folder = path.join(this.workspace.root, '.vscode')
     return path.join(folder, CONFIG_FILE_NAME)
   }
 

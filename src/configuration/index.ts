@@ -50,7 +50,7 @@ export default class Configurations {
     }
     this._configuration = Configurations.parse(data)
     this.watchFile(userConfigFile, ConfigurationTarget.User)
-    let folderConfigFile = path.join(process.cwd(), `.vim/${CONFIG_FILE_NAME}`)
+    let folderConfigFile = path.join(process.cwd(), `.vscode/${CONFIG_FILE_NAME}`)
     if (folderConfigFile != userConfigFile && fs.existsSync(folderConfigFile)) {
       this.addFolderFile(folderConfigFile)
     }
@@ -313,7 +313,7 @@ export default class Configurations {
     if (u.scheme != 'file') return
     let rootPath = path.dirname(u.fsPath)
     if (!this.hasFolderConfiguration(rootPath)) {
-      let folder = findUp('.vim', rootPath)
+      let folder = findUp('.vscode', rootPath)
       if (folder && folder != os.homedir()) {
         let file = path.join(folder, CONFIG_FILE_NAME)
         if (fs.existsSync(file)) {

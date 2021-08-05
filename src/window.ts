@@ -225,9 +225,9 @@ class Window {
       this.showMessage(`Can't create local config in home directory`, 'warning')
       return
     }
-    let dir = path.join(root, '.vim')
+    let dir = path.join(root, '.vscode')
     if (!fs.existsSync(dir)) {
-      let res = await this.showPrompt(`Would you like to create folder'${root}/.vim'?`)
+      let res = await this.showPrompt(`Would you like to create folder'${root}/.vscode'?`)
       if (!res) return
       fs.mkdirSync(dir)
     }
